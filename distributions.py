@@ -20,6 +20,8 @@ fig, ax = plt.subplots(figsize=(10, 5))
 # Distribution-Specific Configurations
 if distribution_type == "Poisson":
     st.sidebar.subheader("Poisson Distribution Parameters")
+    st.sidebar.markdown("- **Mean (λ)**: The average number of events (e.g., tickets, issues) expected per time period.")
+    st.sidebar.markdown("- **Threshold**: The maximum number of events your team can handle before being overwhelmed.")
     mean = st.sidebar.slider("Mean (λ):", 1, 20, 4)
     threshold = st.sidebar.slider("Threshold for Events:", 1, 20, 10)
     days = np.arange(0, 20)
@@ -40,6 +42,9 @@ if distribution_type == "Poisson":
 
 elif distribution_type == "Normal":
     st.sidebar.subheader("Normal Distribution Parameters")
+    st.sidebar.markdown("- **Mean (μ)**: The average value (e.g., session length) around which data is centered.")
+    st.sidebar.markdown("- **Standard Deviation (σ)**: The spread of the data around the mean; higher values indicate greater variability.")
+    st.sidebar.markdown("- **Lower/Upper Bounds**: The range within which most data is expected to fall.")
     mean = st.sidebar.slider("Mean (μ):", 0, 1000, 300)
     std_dev = st.sidebar.slider("Standard Deviation (σ):", 1, 300, 50)
     lower_bound = st.sidebar.slider("Lower Bound for Analysis:", 0, 1000, 250)
@@ -61,6 +66,9 @@ elif distribution_type == "Normal":
 
 elif distribution_type == "Binomial":
     st.sidebar.subheader("Binomial Distribution Parameters")
+    st.sidebar.markdown("- **Number of Trials (n)**: The total number of attempts (e.g., users in an A/B test).")
+    st.sidebar.markdown("- **Probability of Success (p)**: The likelihood of a single trial succeeding (e.g., a user adopting a feature).")
+    st.sidebar.markdown("- **Success Threshold**: The number of successes required to meet your objective.")
     trials = st.sidebar.slider("Number of Trials (n):", 1, 100, 10)
     probability = st.sidebar.slider("Probability of Success (p):", 0.0, 1.0, 0.5)
     success_threshold = st.sidebar.slider("Success Threshold:", 0, 100, 7)
